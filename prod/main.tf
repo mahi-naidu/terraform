@@ -1,4 +1,4 @@
-module "stage" {
+module "prod" {
       source ="../vpc/"
       region = "ap-northeast-1"
       cidr = "10.4.0.0/16"
