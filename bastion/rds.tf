@@ -35,7 +35,7 @@ resource "aws_security_group" "rds" {
 
 resource "aws_db_subnet_group" "db-subnetgroup" {
   name       = "db-subnetgroup"
-  subnet_ids = [ aws_subnet.privsubnets.id, aws_subnet.datasubnets.id]
+  subnet_ids = [ aws_subnet.datasubnets[1].id, aws_subnet.datasubnets[2].id]
 
   tags = {
     Name = "${var.envname}-rdssubnet-group"
@@ -54,5 +54,5 @@ resource "aws_db_instance" "mysql" {
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
   db_subnet_group_name   = aws_db_subnet_group.db-subnetgroup.name
-  vpc_security_group_ids = ["${aws_security_group.rdssg.id}"]
+  vpc_security_group_ids = ["${aws_security_group.rds.id}"]
 }
