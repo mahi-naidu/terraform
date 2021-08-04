@@ -5,3 +5,5 @@ variable pubsubnets{}
 variable privsubnets{}
 variable datasubnets{}
 variable azs {}
+variable ami {}
+variable type {}
